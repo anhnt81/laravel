@@ -1,0 +1,120 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/',[
+	'as'=>'trang-chu',
+	'uses'=>'PageController@getIndex'
+	]);
+Route::get('loai-san-pham/{type}',[
+	'as'=>'loaisanpham',
+	'uses'=>'PageController@getLoaiSp'
+	]);
+Route::get('san-pham-moi',[
+	'as'=>'san-pham-moi',
+	'uses'=>'PageController@getSpmoi'
+	]);
+Route::get('san-pham-km',[
+	'as'=>'san-pham-km',
+	'uses'=>'PageController@getSpkm'
+	]);
+Route::get('chi-tiet-san-pham/{id}',[
+	'as'=>'sanpham',
+	'uses'=>'PageController@getSp'
+	]);
+Route::get('gioithieu',[
+	'as'=>'gioi-thieu',
+	'uses'=>'PageController@getGioithieu'
+	]);
+Route::get('lienhe',[
+	'as'=>'lien-he',
+	'uses'=>'PageController@getLienhe'
+	]);
+Route::get('add-to-cart/{id}',[
+	'as'=>'them-gio-hang',
+	'uses'=>'PageController@getAddtocart'
+	]);
+Route::get('del-cart/{id}',[
+	'as'=>'xoa-gio-hang',
+	'uses'=>'PageController@getDelItemCart'
+	]);
+Route::get('dat-hang',[
+	'as'=>'dat-hang',
+	'uses'=>'PageController@getCheckout'
+	]);
+Route::post('dat-hang',[
+	'as'=>'dat-hang',
+	'uses'=>'PageController@postCheckout'
+	]);
+Route::get('login',[
+	'as'=>'login',
+	'uses'=>'PageController@getLogin'
+	])->middleware('login');
+Route::post('login',[
+	'as'=>'login',
+	'uses'=>'PageController@postLogin'
+	]);
+Route::get('signup',[
+	'as'=>'dang-ki',
+	'uses'=>'PageController@getSignup'
+	]);
+Route::post('signup',[
+	'as'=>'dang-ki',
+	'uses'=>'PageController@postSignup'
+	]);
+Route::get('dang-xuat',[
+	'as'=>'logout',
+	'uses'=>'PageController@getLogout'
+	]);
+Route::get('info-account/{id}',[
+	'as'=>'account',
+	'uses'=>'PageController@getAccount'
+	]); 
+Route::post('info-account/{id}',[
+	'as'=>'updateAccount',
+	'uses'=>'PageController@updateAccount'
+	]);
+Route::get('search',[
+	'as'=>'search',
+	'uses'=>'PageController@getSearch'
+	]);
+Route::get('test',function(){
+	return view('test');
+});
+Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
+	Route::get('/','PageController@admin');
+	Route::get('/view-list-user','PageController@showUser')->name('list.user');
+	Route::post('/view-list-user','PageController@postCreate')->name('created.user');
+	Route::get('/search','PageController@search')->name('search.user');
+	Route::get('/edit/{id}','PageController@edit')->name('edit.user');
+	Route::post('/edit/{id}','PageController@update')->name('update.user');
+	Route::get('/delete/{id}','PageController@delete')->name('delete.user');
+	Route::get('/view-list-producttype','PageController@showProducttype')->name('list.producttype');
+	Route::get('/dang-xuat','PageController@Logout')->name('admin.logout');
+	Route::post('/view-list-producttype','PageController@postCreatetype')->name('created.type');
+	Route::get('/edit/producttype/{id}','PageController@editType')->name('edit.type');
+	Route::post('/edit/producttype/{id}','PageController@updateType')->name('update.type');
+	Route::get('/producttype/search','PageController@searchtype')->name('search.type');
+	Route::get('/view-list-product','PageController@showProduct')->name('list.product');
+	Route::get('/deleteProducttype/{id}','PageController@deleteType')->name('delete.type');
+	Route::post('/view-list-product','PageController@createdProduct')->name('created.product');
+	Route::get('/view-search-product','PageController@searchProduct')->name('search.product');
+	Route::get('/edit/product/{id}','PageController@editProduct')->name('edit.product');
+	Route::post('/edit/product/{id}','PageController@updateProduct')->name('update.product');
+	Route::get('/delete/product/{id}','PageController@deleteProduct')->name('delete.product');
+	Route::get('/bills','PageController@getBills')->name('bills');
+	Route::get('/bills/delete/{id}','PageController@deleteBills')->name('delete.bills');
+	Route::get('/bills/viewbills/nosell','PageController@detailnoSell')->name('nosell.detail');
+	Route::get('/bills/viewbills/sold','PageController@detailSold')->name('sold.detail');
+	Route::get('/bills/viewbills/payProduct','PageController@payMent')->name('payProduct.payMent');
+});
+
