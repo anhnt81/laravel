@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('admin/dang-nhap', ['as' => 'getlogin', 'uses' => 'Auth\LoginController@getLogin']);
 Route::post('admin/dang-nhap', ['as' => 'postLogin', 'uses' => 'Auth\LoginController@postLogin']);
 
