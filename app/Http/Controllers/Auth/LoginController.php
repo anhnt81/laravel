@@ -19,18 +19,21 @@ class LoginController extends Controller
     // }
 
     public function getLogin () {
-        return view('auth.login');
+        if (Auth::check()) {
+            return redirect()->route('getMaster');
+        }else {
+            return view('auth.login');
+        }
+        
     }
     public function postLogin (LoginRequest $request) {
-//        $login = new User;
         $login = [
             'username' => $request -> username,
             'password' => $request -> password,
             'level' => 1
         ];
         if (auth::attempt($login)) {
-//            return redirect()->route('home');
-            return 'Ban da dang nhap thanh cong';
+           return redirect()->route('getMaster');
         }else {
             return redirect()->back();
         }
@@ -38,5 +41,15 @@ class LoginController extends Controller
 
     public function getRegister(){
         return view('auth.register');
+    }
+    public function getMaster () {
+        return view('layouts.master');
+    }
+    public function getLogout() {
+        Auth::logout();
+        return redirect()->route('getLogin');
+    }
+    public function getIndex() {
+        return view('layouts.index');
     }
 }

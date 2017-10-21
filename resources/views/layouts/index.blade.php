@@ -1,0 +1,1 @@
+Xin chào {{ Auth::user()->username }} <a href=" {{ url('logout') }} ">Logout</a>
