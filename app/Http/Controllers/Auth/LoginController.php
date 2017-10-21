@@ -22,7 +22,7 @@ class LoginController extends Controller
         if (Auth::check()) {
             return redirect()->route('getMaster');
         }else {
-            return view('auth.login');
+            return view('back-end.auth.login');
         }
         
     }
@@ -33,23 +33,21 @@ class LoginController extends Controller
             'level' => 1
         ];
         if (auth::attempt($login)) {
-           return redirect()->route('getMaster');
+           return redirect()->route('getIndex');
         }else {
             return redirect()->back();
         }
     }
 
     public function getRegister(){
-        return view('auth.register');
+        return view('back-end.auth.register');
     }
-    public function getMaster () {
-        return view('layouts.master');
-    }
+
     public function getLogout() {
         Auth::logout();
         return redirect()->route('getLogin');
     }
     public function getIndex() {
-        return view('layouts.index');
+        return view('back-end.index');
     }
 }

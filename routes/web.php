@@ -24,6 +24,7 @@ Route::post('admin/dang-ky', ['as' => 'postRegister', 'uses' => 'Auth\LoginContr
 Route::get('master', ['as' => 'getMaster', 'uses' => 'Auth\LoginController@getMaster']);
 
 Route::get('logout', ['as' => 'getLogout', 'uses' => 'Auth\LoginController@getLogout']);
-Route::get('index', ['as' => 'getIndex', 'uses' => 'Auth\LoginController@getIndex']);
 
-Route::get('master', ['as' => 'getMaster', 'uses' => 'Auth\LoginController@getMaster']);
+Route::get('admin/home', ['as' => 'getIndex', 'uses' => 'Auth\LoginController@getIndex']);
+
+//Route::get('master', ['as' => 'getMaster', 'uses' => 'Auth\LoginController@getMaster']);

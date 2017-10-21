@@ -15,16 +15,18 @@ class CreateFightsTable extends Migration
     {
         Schema::create('fights', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tendoinha');
-            $table->string('tendoikhach');
-            $table->datetime('timein');
-            $table->datetime('timeout');
-            $table->integer('tiso');
+            $table->unsignedInteger('players_id');
+            $table->string('ten_doi_nha');
+            $table->string('ten_doi_khach');
+            $table->datetime('time_in');
+            $table->datetime('time_out');
+            $table->integer('ti_so');
             $table->integer('status');
-            $table->integer('doinhathang');
+            $table->integer('doi_nha_thang');
             $table->integer('hoa');
-            $table->integer('doikhachthang');
+            $table->integer('doi_khach_thang');
             $table->timestamps();
+            $table->foreign('players_id')->references('id')->on('players')->onDelete('cascade');
         });
     }
 
