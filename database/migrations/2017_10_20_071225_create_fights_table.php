@@ -25,8 +25,8 @@ class CreateFightsTable extends Migration
             $table->integer('doi_nha_thang');
             $table->integer('hoa');
             $table->integer('doi_khach_thang');
-            $table->timestamps();
             $table->foreign('players_id')->references('id')->on('players')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

@@ -4,11 +4,11 @@
     <hr color="darkgray">
     <ul class="nav nav-pills nav-stacked" role="tablist" style='border: none'>
         <li id='home' class='active'>
-            <a href="#"> <span class="glyphicon glyphicon-home"></span> Trang Chủ</a>
+            <a href="{{ route('getIndex') }}"> <span class="glyphicon glyphicon-home"></span> Trang Chủ</a>
         </li>
 
         <li id='user' class="dropdown">
-            <a href="#">
+            <a href="{{ route('listUsers') }}">
                 <span class="glyphicon glyphicon-user"></span> Quản Lý Tài Khoản Admin
             </a>
         </li>

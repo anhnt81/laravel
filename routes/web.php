@@ -27,4 +27,7 @@ Route::get('logout', ['as' => 'getLogout', 'uses' => 'Auth\LoginController@getLo
 
 Route::get('admin/home', ['as' => 'getIndex', 'uses' => 'Auth\LoginController@getIndex']);
 
-//Route::get('master', ['as' => 'getMaster', 'uses' => 'Auth\LoginController@getMaster']);
+Route::group(['prefix' => 'users'], function () {
+   Route::get('list', ['as' => 'listUsers', 'uses' => 'Admin\AccountController@listUsers']);
+   Route::get('add', ['as' => 'addUsers', 'uses' => 'Admin\AccountController@addUsers']);
+});

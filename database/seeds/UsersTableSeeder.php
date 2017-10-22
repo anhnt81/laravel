@@ -15,7 +15,6 @@ class UsersTableSeeder extends Seeder
             'username' => 'admin',
             'password' => bcrypt('altplus'),
             'level' => 1,
-            'sotk' => 5000,
             'created_at' => new DateTime()
         ]);
     }

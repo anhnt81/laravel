@@ -20,7 +20,7 @@ class LoginController extends Controller
 
     public function getLogin () {
         if (Auth::check()) {
-            return redirect()->route('getMaster');
+            return redirect()->route('getIndex');
         }else {
             return view('back-end.auth.login');
         }
@@ -47,7 +47,7 @@ class LoginController extends Controller
         Auth::logout();
         return redirect()->route('getLogin');
     }
-    public function getIndex() {
-        return view('back-end.index');
-    }
+   public function getIndex() {
+       return view('back-end.index');
+   }
 }

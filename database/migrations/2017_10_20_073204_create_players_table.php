@@ -20,9 +20,9 @@ class CreatePlayersTable extends Migration
             $table->string('cua_cuoc');
             $table->integer('so_tien_cuoc');
             $table->integer('ti_le_cuoc');
-            $table->timestamps();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('fights_id')->references('id')->on('fights')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
