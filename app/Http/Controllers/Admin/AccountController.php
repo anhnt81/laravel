@@ -28,8 +28,20 @@ class AccountController extends Controller
     	$data->username = $request->username;
     	$data->email = $request->email;
     	$data->phone = $request->phone;
-    	$data->password = $request->pass;
-    	$data->password = $request->repass;
+        if($request->pass == $request->repass){
+            $data->password = bcrypt($request->pass);
+        }
+        $data->level = 2;
+        //Cách debug hiển thị ra array data
+        // echo '<pre>';
+        // print_r($data);
+        // echo '</pre>';
+        // die();
     	$data->save();
+        //with('success', 'Thêm thành công!') chính là gửi 1 message ra view listUsers e thêm đoạn code này vào file view để hiển thị thông báo nhé.
+        // @if(!empty(session('success')))
+        //             <div class='alert alert-success'>{{session('success')}}</div>
+        //         @endif
+        return redirect()->route('listUsers')->with('success', 'Thêm thành công!');
     }
 }
