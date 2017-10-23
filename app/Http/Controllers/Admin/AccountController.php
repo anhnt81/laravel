@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use DB;
+use App\Http\Requests\Admin\AddUserRequest;
 
 class AccountController extends Controller
 {
@@ -19,7 +20,16 @@ class AccountController extends Controller
     public function  accCustomer(){
 
     }
-    public function addUsers() {
-    	
+    public function getaddUsers() {
+    	return view('back-end.users.add');
+    }
+    public function postaddUsers(AddUserRequest $request) {
+    	$data = new User;
+    	$data->username = $request->username;
+    	$data->email = $request->email;
+    	$data->phone = $request->phone;
+    	$data->password = $request->pass;
+    	$data->password = $request->repass;
+    	$data->save();
     }
 }

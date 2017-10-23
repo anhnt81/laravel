@@ -6,14 +6,14 @@
 
 @section('breadcrumb')
     <li><a href="#">Trang chủ</a></li>
-    <li>Admin</li>
+    <li>Người Dùng</li>
 @endsection
 
 @section('content')
     <!-- main content  -->
     <div>
         <div class='col-xs-12 col-md-6'>
-            <a class='btn btn-primary' role='button' href='#'>
+            <a class='btn btn-primary' role='button' href="{{ route('getaddUsers') }}">
                 <span class='glyphicon glyphicon-plus'></span> Thêm mới
             </a>
         </div>

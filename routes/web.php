@@ -29,5 +29,6 @@ Route::get('admin/home', ['as' => 'getIndex', 'uses' => 'Auth\LoginController@ge
 
 Route::group(['prefix' => 'users'], function () {
    Route::get('list', ['as' => 'listUsers', 'uses' => 'Admin\AccountController@listUsers']);
-   Route::get('add', ['as' => 'addUsers', 'uses' => 'Admin\AccountController@addUsers']);
+   Route::get('add', ['as' => 'getaddUsers', 'uses' => 'Admin\AccountController@getaddUsers']);
+   Route::post('add', ['as' => 'postaddUsers', 'uses' => 'Admin\AccountController@postaddUsers']);
 });
